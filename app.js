@@ -5,8 +5,10 @@ var bp=require("body-parser")
 var path=require("path");
 var data=require("./model/db");
 var mongo=require('mongoose')
-mongo.connect("mongodb://localhost:27017/workers")
-var port=8080;
+mongo.connect("process.env.DB_URL")
+
+require('dotenv').config();
+var port=process.env.PORT;
 const { title } = require("process");
 
 const multer  = require('multer')
