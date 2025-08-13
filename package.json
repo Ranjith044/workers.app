@@ -1,4 +1,12 @@
 {
+  "name": "mvc2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.1",
@@ -7,12 +15,6 @@
     "mongoose": "^8.17.1",
     "multer": "^2.0.2",
     "path": "^0.12.7"
-  },
-  "name": "mvc2",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,5 @@
   "bugs": {
     "url": "https://github.com/Ranjith044/workers.app/issues"
   },
-  "homepage": "https://github.com/Ranjith044/workers.app#readme",
-  "description": ""
+  "homepage": "https://github.com/Ranjith044/workers.app#readme"
 }
