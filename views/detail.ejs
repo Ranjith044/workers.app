@@ -1,0 +1,32 @@
+<%-include('./layout/header') %>
+
+<h1> ALL USER DETAILS</h1>
+ <table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Email</th>
+            <th>userid</th>
+            <th>image</th>
+        </tr>
+    </thead>
+    <tbody>
+       <% if(message){  %>
+          <%  message.map((val)=>{  %>
+            <tr>
+                <td><%= val.name%></td>
+                <td><%= val.email%></td>
+                <td><%= val.userid%></td>
+                <td><img src="./my-uploads/<%= val.image %>" width="80px"></td>
+            </tr>
+          <%   }) %>
+        <%}  %>
+                    
+
+    </tbody>
+ </table>
+
+
+
+</body>
+</html>
