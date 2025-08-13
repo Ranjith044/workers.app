@@ -6,6 +6,14 @@ const multer = require('multer');
 const fs = require('fs');
 require('dotenv').config();
 
+const session = require('express-session');
+
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
+
 const app = express();
 
 // Import model
@@ -58,14 +66,20 @@ app.get('/', (req, res) => res.render('index', { title: 'indexpage' }));
 
 app.get('/reg', (req, res) => res.render('reg', { title: 'Registration' }));
 
-app.get('/detail', async (req, res, next) => {
+app.get('/detail', async (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect('/login'); // Must log in first
+    }
+
     try {
-        const results = await Data.find();
-        res.render('detail', { title: 'all details', message: results });
+        const userDetails = await Data.find({ _id: req.session.userId });
+        res.render('detail', { title: 'Your Details', message: userDetails });
     } catch (err) {
-        next(err);
+        console.error(err);
+        res.status(500).send('Server Error');
     }
 });
+
 
 app.post('/insert', upload.single('img'), async (req, res, next) => {
     try {
